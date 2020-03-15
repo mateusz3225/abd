@@ -1,10 +1,74 @@
-
+<!DOCTYPE HTML>  
 <html>
-  <head>
-  </head>
-<body>
+<head>
+
+<style>
+#wyslij{
+	background-color:green;
+	border:none;
+	padding:5px;
+	color:white;
+	font-size: 20px;
+}
+body {
+	
+  background-image: url('pic.jpg');
+  background-size: cover;
+}
+#xd {
+	color:red;
+	text-align:center;
+}
+#col {color:#66FCF1;
+}
+#wow{
+	text-align:center;
+width:500px;
+height:800px;
+background-color: #1F2833;
+	 
+  margin-left: auto;
+    margin-right: auto;
+	font-family:Arial;
+	
+}
+</style>
+</head>
+
+<body bgcolor="black"><div id="wow">  <div id="col">
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"> 
+   imie: <input type="text" name="imie" pattern="[A-Za-z]{2,30}" title="min 2 do 30 znaków , tylko duże i małe litery" >
+  <br><br>
+  nazwisko: <input type="text" name="nazwisko" pattern="[A-Za-z]{2,30}" title="min 2 do 30 znaków , tylko duże i małe litery">
+  <br><br>
+  email: <input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9]+.[a-z]{2,40}$"title="np.nazwa@gmail.com  dozwolone znaki specjalne w nazwie to . _ % + - " > </br>
+  POTWIERDZAM <a href="http://zse-e.edu.pl/index.php/szkola/wymagania/statut/send/18-statut/111-statut-zse-e-ujednolicony-listopad-2019">REGULAMIN</a> STRONY <input type="checkbox" id="regulamin" name="regulamin" value="regulamin"> </br>
   
-  <h1>:)</h1>
-    </body>
-    
-    </head?
+  <input type="submit" name="wyslij" value="wyślij" id="wyslij">  
+</form>
+
+</div>
+
+<?php
+if(empty($_POST['imie']))
+{
+    echo '<div id="xd">*Wypełnij pole imie<br>';
+}
+if(empty($_POST['nazwisko']))
+{
+    echo "*Wypełnij pole nazwisko<br>";
+}
+if(empty($_POST['email']))
+{
+    echo "*Wypełnij pole email<br>";
+}
+if (isset($_POST['regulamin']) && !empty($_POST['regulamin'])) {
+   echo '<font color="green">checkbox kliknięty</font>';
+
+} else {
+   echo '*nie kliknięty</div>';
+}
+?>
+</div>
+</body>
+</html>
